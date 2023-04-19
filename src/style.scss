@@ -1,0 +1,624 @@
+
+@mixin  mobile {
+    @media screen and (max-width:480px) {
+        @content;
+        
+    }
+  
+}
+
+@mixin  tablet {
+    @media screen and (max-width:768px) {
+        @content;
+        
+    }
+  
+}
+@mixin  laptop {
+    @media screen and (max-width:1200px) {
+        @content;
+        
+    }
+  
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    
+    
+}
+
+.formContainer{
+    background-color: rgb(39, 38, 38);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .formWrapper{
+        
+        background-color: white;
+        padding: 50px 30px;
+        overflow-x: hidden;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+       
+        box-shadow:5px 5px 0 rgba(255, 255, 255, 0.452);
+
+        .image{
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        
+        @include mobile{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow-y: hidden;
+            border-radius: 0;
+        
+        }
+        .logo{
+            font-weight: bold;
+            width: 100px;
+            height: 100px;
+            
+        }
+
+        .title{
+            color: #444;
+            font-size: 1.5rem;
+            font-weight: bolder;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 350px;
+            @include mobile(){
+                width: auto;
+            }
+
+            input{
+                padding: 15px;
+                border: none;
+                width: 100%;
+                font-size: 1.1rem;
+                border-bottom:1px solid #7b96ec;
+                &::placeholder{
+                    color: #4f4f5071;
+                }
+
+            }
+            button{
+                background-color: #4893f5;
+                color: white;
+                padding: 10px;
+                border: none;
+                cursor: pointer;
+
+            }
+            label{
+                display: flex;
+                align-items: center;
+                color: #999;
+                cursor: pointer;
+                gap: 10px;
+
+                img{
+                    width: 30px;
+                }
+
+            }
+            
+        }
+        p{
+            color: #4893f5;
+            font-size: 16px;
+            margin-top: 10px;
+            
+        }
+    }
+}
+
+
+
+.home{
+    background-color: #000d1a;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include mobile(){
+        height: 90vh;
+    }
+    .bar{
+        position: absolute;
+        top: 1.2rem;
+        right: 1.5rem;
+        color: #fafcfd;
+        cursor: pointer;
+        display: none;
+        @include tablet(){
+            display: block;
+        }
+        @include mobile(){
+            display: block;
+        }
+    }
+    
+    
+    .container{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        overflow: hidden;
+        @include tablet{
+            width: 100%;
+
+        }
+        .containerbar{
+            
+            .sidebar{
+            
+                background-color: #001a33;
+                position: relative;
+                height: 100%;
+                border-right: 1px solid rgba(255, 255, 255, 0.39);
+                width: 400px;
+                transition: all .5s ease;
+                @include laptop(){
+                    width: 300px;
+                }
+                @include tablet(){
+                    width: 100%;
+                }
+                @include tablet(){
+                    display: none;
+                    &.active{
+                        display: block;
+                        width: 100%;
+                        position: absolute;
+                        z-index: 99;
+                    }
+                }
+                
+                @include mobile(){
+                    display: none;
+                    &.active{
+                        display: block;
+                        width: 100%;
+                        position: absolute;
+                        z-index: 99;
+                    }
+                }
+                
+                .navbar{
+                    display: flex;
+                    align-items: center;
+                    height: 60px;
+                    padding: 10px;
+                    justify-content: space-between;
+                    background-color: #000d1a;
+                    color: #ddddf7;
+                    @include laptop(){
+                        display: flex;
+                        justify-content: space-between;
+                    }
+    
+                    .logo{
+                        font-weight: bolder;
+                        font-size: 1.8rem;
+                        
+                        @include laptop(){
+                            display: none;
+            
+                        }
+                    }
+                    .user{
+                        display: flex;
+                        gap: 1rem;
+                        width: 50%;
+                        justify-content: flex-end;
+                        @include laptop(){
+                            width: 100%;
+                            justify-content: space-between;
+                        }
+                        @include tablet(){
+                            padding-right: 1rem;
+                        }
+                        .userinFo{
+                            display: flex;
+                            align-items: center;
+                            gap: .5rem;
+                            img{
+                                width: 30px;
+                                height: 30px;
+                                border-radius: 50%;
+                                background-color: #ddddf7;
+                                object-fit: cover;
+                            }
+                        }
+
+                        
+                        button{
+                            background: none;
+                            color: white;
+                            border: none;
+                            cursor: pointer;
+                            font-size: 1.2rem;
+                            padding: .5rem 2rem;
+                            padding: 0 .3rem;
+                            &:hover{
+                                color: red;
+            
+                            }
+                        }
+                    }
+                    
+                    
+                }
+                .search{
+                   border-bottom: 1px solid rgba(235, 235, 235, 0.274);
+                   color: #fff;
+                    
+                    .searchform{
+                    margin: 1rem auto;
+                    background: #fff;
+                    border-radius: 5rem;
+                    padding-left: 1rem;
+                    width: 90%;
+                    color: #000d1a;
+                    
+                        padding: 10px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        input{
+                            background-color: transparent;
+                            border: none;
+                            color: #000d1a;
+                            outline: none;
+                            font-family: 'phetsarath ot';
+                            width: 100%;
+                            &::placeholder{
+                                color: rgb(155, 153, 153);
+                            }
+                           
+    
+                        }
+                        i{
+                            cursor: pointer;
+                            @include mobile(){
+                                margin-right: 1rem;
+                            }
+                        }
+                    }
+                    .userChar{
+                       
+                        padding: 10PX;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        
+                        cursor: pointer;
+                        
+                        &:hover{
+                            background-color: #000d1a;
+                        }
+                        img{
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+                .chats{
+                    
+                    
+                    .userChat{
+                        padding: 10PX;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        color: white;
+                        cursor: pointer;
+                        &:hover{
+                            background-color: #000d1a;
+                        }
+                        img{
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                        .userChatInfo{
+                            span{
+                                font-size: 18px;
+                                font-weight: 500;
+                            }
+                            p{
+                                font-size: 12px;
+                                color: gray;
+                            }
+                        }
+                    }
+                    
+    
+                }
+    
+            }
+        }
+        
+
+        
+        .chat{
+            flex: 2;
+            .chatInfo{
+                height: 60px;
+                background-color: #000d1a;
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                color: white;
+                @include mobile(){
+                    justify-content: space-between;
+                }
+                .chatInfodetail{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    span{
+                        font-size: 1.2rem;
+                        text-transform: capitalize;
+                    }
+
+
+                    img{
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        margin-right: 1rem;
+                    }
+
+                }
+                
+                i{
+                    display: none;
+                    @include mobile(){
+                        display: block;
+                        
+                    }
+                }
+            }
+
+            .messages{
+                //background-image: url("https://e1.pxfuel.com/desktop-wallpaper/566/1010/desktop-wallpaper-41-dp-for-instagram-pics-that-are-like-by-millions-instagram-dp-boys.jpg");
+                padding: 10px;
+                background-color: #ff99c2;
+                height: calc(100% - 130px);
+                overflow-y: scroll;
+                background-repeat: no-repeat;
+                background-size: cover;
+                .message{
+                    display: flex;
+                    gap: 5px;
+                    margin-bottom: 20px;
+
+                    .messageInfo{
+                        display: flex;
+                        flex-direction: column;
+                        color: gray;
+                        font-weight: 300;
+                        img{
+                            width: 40px;
+                            height: 40px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                            @include mobile(){
+                                width: 25px;
+                                height: 25px;
+                            }
+                        }
+                    }
+                    .messageContent{
+                        max-width: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+                       
+                        p{
+                            background-color: white;
+                            padding: 10px 20px;
+                            border-radius: 5rem;
+                            color: black;
+                            border-bottom-left-radius: 0;
+                            max-width: max-content;
+                            @include mobile(){
+                                border-bottom-left-radius: 5rem;
+                                border-top-left-radius: 0;
+
+                            }
+
+                        }
+                        p.none{
+                            background: red;
+                        }
+                        
+                        .image{
+                            background: white;
+                            padding: 5px;
+                            border-radius: 10px;
+                            width: 250px;
+                            height: 250px;
+                            border-top-left-radius: 0;
+                            img{
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                background-color: white;
+                               
+                                border-radius: 10px;
+                                
+                                
+    
+                            }
+                            @include mobile(){
+                                width: 180px;
+                                height: 180px;
+                            }
+                            &.owner2{
+                                background-color: #7b96ec;
+                                border-radius:10px;
+                                border-top-right-radius: 0;
+                            }
+                            
+                        }
+                        
+                            
+                        
+                    }
+                    &.owner{
+                        flex-direction: row-reverse;
+                        .messageContent{
+                            align-items: flex-end;
+                            p{
+                                background-color: #7b96ec;
+                                color: white;
+                                border-radius: 5rem;
+                                border-bottom-right-radius: 0;
+                                height: auto;
+                                @include mobile(){
+                                    border-bottom-right-radius: 5rem;
+                                    border-top-right-radius: 0;
+
+                                }
+                            }
+                            .none{
+                                background: red;
+                            }
+
+                        }
+                        
+                    }
+
+                }
+                
+
+            }
+            .input{
+                height:70px;
+                background-color: #000d1a;
+                padding:0 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+                position: relative;
+
+                .images{
+                    width: 100%;
+                    height: 100px;
+                    position: absolute;
+                    top: -100px;
+                    left: 0;
+                    background: white;
+                    padding: .5rem;
+                    img{
+                        height: 100%;
+                    }
+                }
+                @include mobile(){
+                    gap: .5em;
+                    padding: 0 .5rem;
+                }
+
+                
+                
+                .inputs{
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    color: #444;
+                    padding:.8rem 1rem ;
+                    font-size: 16px;
+                    background-color: white;
+                    border-radius: 5rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    i{
+                        font-size: 1.2rem;
+                        color: #626264;
+                    }
+                   
+                    input{
+                        border: none;
+                        width: 100%;
+                        padding: 2px;
+                        font-size: 1.2rem;
+                    }
+                  
+                }
+                .picker{
+                    position: absolute;
+                    top: -450px;
+
+                    width: 100px;
+
+                }
+
+                .send{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    justify-content: center;
+                   
+                    .image{
+                      
+                        font-size: 1.2rem;
+                        cursor: pointer;
+                        margin-right: 1rem;
+                        background-color: rgb(190, 6, 190);
+                        border-radius: 5rem;
+                        padding: .8rem;
+                        color: #fff;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        @include mobile(){
+                            margin-right: 0;
+                        }
+                    }
+
+                    .btn{
+                        border: none;
+                        padding: 15px 15px;
+                        background-color: #d18108;
+                        color: white;
+                        cursor: pointer;
+                        border-radius: 50%;
+                      
+                        i{
+
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
